@@ -7,11 +7,11 @@ class AlienInvation:
 
     def __init__(self):
         """Инициализирует игру и создает игровые ресурсы"""
-        #инициализация настроек
+        # инициализация настроек
         pygame.init()
-        #запуск окна игры с указанием размера
+        # запуск окна игры с указанием размера
         self.screen = pygame.display.set_mode((1200, 800))
-        #название окна
+        # название окна
         pygame.display.set_caption("Alien Invation")
 
     def run_game(self):
