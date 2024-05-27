@@ -13,6 +13,8 @@ class AlienInvation:
         self.screen = pygame.display.set_mode((1200, 800))
         # название окна
         pygame.display.set_caption("Alien Invation")
+        # цвет фона RGB от 0 до 255
+        self.bg_color = (230, 230, 230)
 
     def run_game(self):
         """Зауск основного цикла игры"""
@@ -22,6 +24,9 @@ class AlienInvation:
                 if event.type == pygame.QUIT:
                     sys.exit()
 
+            # перерисовывание экрана при проходе цикла
+            # и напролнение его цветом фона
+            self.screen.fill(self.bg_color)
             # Отображение последнего прорисованного экрана
             pygame.display.flip()
 
