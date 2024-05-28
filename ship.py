@@ -4,9 +4,10 @@ import pygame
 class Ship:
     """Класc управления кораблем"""
 
-    def __init__(self, ai_game):
+    def __init__(self, ai_game):  # аргумент - объект игры
         """Инициализирует корабль и задает его начальную позицию"""
         self.screen = ai_game.screen
+        # получаем данные экрана
         self.screen_rect = ai_game.screen.get_rect()
         # загружает изображение корабля
         image = pygame.image.load("images/ship.bmp")
