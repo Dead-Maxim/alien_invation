@@ -3,6 +3,7 @@ import pygame
 
 from settings import Settings
 from ship import Ship
+from shrek import Shrek
 
 
 class AlienInvation:
@@ -22,6 +23,8 @@ class AlienInvation:
         pygame.display.set_caption("Alien Invation")
         # выводим корабль
         self.ship = Ship(self)
+        # выводим Шрека
+        self.shrek = Shrek(self)
 
     def run_game(self):
         """Зауск основного цикла игры"""
@@ -44,6 +47,8 @@ class AlienInvation:
         self.screen.fill(self.settings.bg_color)
         # рисуем корабль
         self.ship.blitme()
+        # рисуем Шрека
+        self.shrek.blitme()
         # Отображение последнего прорисованного экрана
         pygame.display.flip()
 
