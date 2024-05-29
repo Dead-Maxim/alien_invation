@@ -33,17 +33,34 @@ class AlienInvation:
             self._check_events()
             # рисуем экран
             self._update_screen()
+            # проверяем надоли двигаться
+            self.ship.update()
 
     def _check_events(self):
         """Отслеживат события на клавиатуре"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            # если событие нажатие клавиши
             elif event.type == pygame.KEYDOWN:
+                # если эта клавиша вправо
                 if event.key == pygame.K_RIGHT:
-                    self.ship.rect.x += 1
+                    # меняем флаг передвижения вправо на истину
+                    self.ship.moving_right = True
+                # если это клавиша влево
                 elif event.key == pygame.K_LEFT:
-                    self.ship.rect.x -= 1
+                    # меняем флаг передвижения влево на истину
+                    self.ship.moving_left = True
+            # если событие клавиша отпущена
+            elif event.type == pygame.KEYUP:
+                # эта клавиша вправо
+                if event.key == pygame.K_RIGHT:
+                    # меняем флаг движения вправо на ложь
+                    self.ship.moving_right = False
+                # эта клавиша влево
+                elif event.key == pygame.K_LEFT:
+                    # меняем флаг движения влево на ложь
+                    self.ship.moving_left = False
 
     def _update_screen(self):
         """Отрисовывает экран"""
