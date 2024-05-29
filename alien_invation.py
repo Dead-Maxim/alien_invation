@@ -28,6 +28,8 @@ class AlienInvation:
         while True:
             # Отслеживание событий клавиатуры и мыши
             self._check_events()
+            # рисуем экран
+            self._update_screen()
             # перерисовывание экрана при проходе цикла
             # и напролнение его цветом фона
             self.screen.fill(self.settings.bg_color)
@@ -37,9 +39,20 @@ class AlienInvation:
             pygame.display.flip()
 
     def _check_events(self):
+        """Отслеживат события на клавиатуре"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+
+    def _update_screen(self):
+        """Отрисовывает экран"""
+        # перерисовывание экрана при проходе цикла
+        # и напролнение его цветом фона
+        self.screen.fill(self.settings.bg_color)
+        # рисуем корабль
+        self.ship.blitme()
+        # Отображение последнего прорисованного экрана
+        pygame.display.flip()
 
 
 if __name__ == "__main__":
