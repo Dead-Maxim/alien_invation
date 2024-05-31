@@ -7,6 +7,7 @@ class Ship:
     def __init__(self, ai_game):  # аргумент - объект игры
         """Инициализирует корабль и задает его начальную позицию"""
         self.screen = ai_game.screen
+        self.settings = ai_game.settings
         # получаем данные экрана
         self.screen_rect = ai_game.screen.get_rect()
         # загружает изображение корабля
@@ -16,6 +17,8 @@ class Ship:
         self.rect = self.image.get_rect()
         # корабль появляется у нижненго края
         self.rect.midbottom = self.screen_rect.midbottom
+        # сохранение вещественной координаты корабля
+        self.x = float(self.rect.x)
         # флаги перемещения по умолчанию ложь
         self.moving_right = False
         self.moving_left = False
@@ -24,9 +27,12 @@ class Ship:
         """Обновляет позицию корабля с учетом флагов"""
         # при получении флага True, меняет положение корабля
         if self.moving_right:
-            self.rect.x += 1
+            self.x += self.settings.ship_speed
         if self.moving_left:
-            self.rect.x -= 1
+            self.x -= self.settings.ship_speed
+        
+        # обновляем rect
+        self.rect.x = self.x
 
     def blitme(self):
         """Рисует корабль в текущей позиции"""
