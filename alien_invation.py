@@ -47,7 +47,7 @@ class AlienInvation:
             # если событие клавиша отпущена
             elif event.type == pygame.KEYUP:
                 self._check_keyup_event(event)
-                
+
     def _check_keydown_event(self, event):
         """Нажатие клавиш"""
         # если эта клавиша вправо
