@@ -43,24 +43,32 @@ class AlienInvation:
                 sys.exit()
             # если событие нажатие клавиши
             elif event.type == pygame.KEYDOWN:
-                # если эта клавиша вправо
-                if event.key == pygame.K_RIGHT:
-                    # меняем флаг передвижения вправо на истину
-                    self.ship.moving_right = True
-                # если это клавиша влево
-                elif event.key == pygame.K_LEFT:
-                    # меняем флаг передвижения влево на истину
-                    self.ship.moving_left = True
+                self._check_keydown_event(event)
             # если событие клавиша отпущена
             elif event.type == pygame.KEYUP:
-                # эта клавиша вправо
-                if event.key == pygame.K_RIGHT:
-                    # меняем флаг движения вправо на ложь
-                    self.ship.moving_right = False
-                # эта клавиша влево
-                elif event.key == pygame.K_LEFT:
-                    # меняем флаг движения влево на ложь
-                    self.ship.moving_left = False
+                self._check_keyup_event(event)
+                
+    def _check_keydown_event(self, event):
+        """Нажатие клавиш"""
+        # если эта клавиша вправо
+        if event.key == pygame.K_RIGHT:
+            # меняем флаг передвижения вправо на истину
+            self.ship.moving_right = True
+        # если это клавиша влево
+        elif event.key == pygame.K_LEFT:
+            # меняем флаг передвижения влево на истину
+            self.ship.moving_left = True
+
+    def _check_keyup_event(self, event):
+        """Отпускание клавиш"""
+        # эта клавиша вправо
+        if event.key == pygame.K_RIGHT:
+            # меняем флаг движения вправо на ложь
+            self.ship.moving_right = False
+        # эта клавиша влево
+        elif event.key == pygame.K_LEFT:
+            # меняем флаг движения влево на ложь
+            self.ship.moving_left = False
 
     def _update_screen(self):
         """Отрисовывает экран"""
