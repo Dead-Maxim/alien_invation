@@ -58,6 +58,8 @@ class AlienInvation:
         elif event.key == pygame.K_LEFT:
             # меняем флаг передвижения влево на истину
             self.ship.moving_left = True
+        elif event.key == pygame.K_q:
+            sys.exit()
 
     def _check_keyup_event(self, event):
         """Отпускание клавиш"""
