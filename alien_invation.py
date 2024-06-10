@@ -27,6 +27,7 @@ class AlienInvation:
         pygame.display.set_caption("Alien Invation")
         # выводим корабль
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
         # выводим Шрека
         self.shrek = Shrek(self)
 
@@ -39,6 +40,8 @@ class AlienInvation:
             self._update_screen()
             # проверяем надоли двигаться
             self.ship.update()
+            self.bullets.update()
+            
 
     def _check_events(self):
         """Отслеживат события на клавиатуре"""
