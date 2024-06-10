@@ -41,7 +41,6 @@ class AlienInvation:
             # проверяем надоли двигаться
             self.ship.update()
             self.bullets.update()
-            
 
     def _check_events(self):
         """Отслеживат события на клавиатуре"""
