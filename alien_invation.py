@@ -4,6 +4,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from shrek import Shrek
+from bullet import Bullet
 
 
 class AlienInvation:
@@ -66,6 +67,9 @@ class AlienInvation:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
             sys.exit()
+        # пробел - стрельба
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet
 
     def _check_keyup_event(self, event):
         """Отпускание клавиш"""
@@ -77,6 +81,11 @@ class AlienInvation:
         elif event.key == pygame.K_LEFT:
             # меняем флаг движения влево на ложь
             self.ship.moving_left = False
+
+    def _fire_bullet(self):
+        """Создание снаряда и включение его в группу bullets"""
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
 
     def _update_screen(self):
         """Отрисовывает экран"""
