@@ -69,7 +69,7 @@ class AlienInvation:
             sys.exit()
         # пробел - стрельба
         elif event.key == pygame.K_SPACE:
-            self._fire_bullet
+            self._fire_bullet()
 
     def _check_keyup_event(self, event):
         """Отпускание клавиш"""
@@ -94,6 +94,8 @@ class AlienInvation:
         self.screen.fill(self.settings.bg_color)
         # рисуем корабль
         self.ship.blitme()
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
         # рисуем Шрека
         self.shrek.blitme()
         # Отображение последнего прорисованного экрана
