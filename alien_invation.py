@@ -42,6 +42,11 @@ class AlienInvation:
             # проверяем надоли двигаться
             self.ship.update()
             self.bullets.update()
+            # Удаление снарядов, вышедших за пределы экрана
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+            # print(len(self.bullets))
 
     def _check_events(self):
         """Отслеживат события на клавиатуре"""
