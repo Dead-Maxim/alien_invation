@@ -43,7 +43,6 @@ class AlienInvation:
             self._update_screen()
             # проверяем надоли двигаться
             self.ship.update()
-            
 
     def _check_events(self):
         """Отслеживат события на клавиатуре"""
@@ -89,7 +88,7 @@ class AlienInvation:
         if len(self.bullets) < self.settings.bullet_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
-    
+
     def _update_bullets(self):
         self.bullets.update()
         # Удаление снарядов, вышедших за пределы экрана
