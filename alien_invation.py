@@ -38,7 +38,7 @@ class AlienInvation:
             # Отслеживание событий клавиатуры и мыши
             self._check_events()
             # стреляем
-            self._bullet_update
+            self._update_bullets()
             # рисуем экран
             self._update_screen()
             # проверяем надоли двигаться
@@ -90,7 +90,7 @@ class AlienInvation:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
     
-    def _bullet_update(self):
+    def _update_bullets(self):
         self.bullets.update()
         # Удаление снарядов, вышедших за пределы экрана
         for bullet in self.bullets.copy():
