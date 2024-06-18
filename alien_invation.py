@@ -37,16 +37,13 @@ class AlienInvation:
         while True:
             # Отслеживание событий клавиатуры и мыши
             self._check_events()
+            # стреляем
+            self._bullet_update
             # рисуем экран
             self._update_screen()
             # проверяем надоли двигаться
             self.ship.update()
-            self.bullets.update()
-            # Удаление снарядов, вышедших за пределы экрана
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-            # print(len(self.bullets))
+            
 
     def _check_events(self):
         """Отслеживат события на клавиатуре"""
@@ -92,6 +89,14 @@ class AlienInvation:
         if len(self.bullets) < self.settings.bullet_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+    
+    def _bullet_update(self):
+        self.bullets.update()
+        # Удаление снарядов, вышедших за пределы экрана
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+        # print(len(self.bullets))
 
     def _update_screen(self):
         """Отрисовывает экран"""
