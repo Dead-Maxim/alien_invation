@@ -19,7 +19,3 @@ class Shrek(Sprite):
         self.rect.y = self.rect.height
         # сохранение горизонтальной позиции
         self.x = float(self.rect.x)
-
-    def blitme(self):
-        """Рисует шрека в текущей позиции"""
-        self.screen.blit(self.image, self.rect)
