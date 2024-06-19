@@ -106,8 +106,6 @@ class AlienInvation:
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
-        # рисуем Шрека
-        self.shrek.blitme()
         # Отображение последнего прорисованного экрана
         pygame.display.flip()
 
