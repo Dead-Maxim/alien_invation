@@ -29,8 +29,10 @@ class AlienInvation:
         # выводим корабль
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
-        # выводим Шрека
-        self.shrek = Shrek(self)
+        # выводим Шреков
+        self.shreks = pygame.sprite.Group()
+        # вызываем армаду шреков
+        self._create_shreks()
 
     def run_game(self):
         """Зауск основного цикла игры"""
@@ -41,7 +43,7 @@ class AlienInvation:
             self._update_bullets()
             # рисуем экран
             self._update_screen()
-            # проверяем надоли двигаться
+            # проверяем надо ли двигаться
             self.ship.update()
 
     def _check_events(self):
@@ -97,6 +99,12 @@ class AlienInvation:
                 self.bullets.remove(bullet)
         # print(len(self.bullets))
 
+    def _create_shreks(self):
+        """Создание шреков"""
+        # Создание шрека
+        shrek = Shrek(self)
+        self.shreks.add(shrek)
+
     def _update_screen(self):
         """Отрисовывает экран"""
         # перерисовывание экрана при проходе цикла
@@ -106,6 +114,8 @@ class AlienInvation:
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        # вывод шрека на экран
+        self.shreks.draw(self.screen)
         # Отображение последнего прорисованного экрана
         pygame.display.flip()
 
